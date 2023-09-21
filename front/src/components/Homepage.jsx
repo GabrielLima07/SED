@@ -16,36 +16,34 @@ import {
     useDisclosure,
     Heading,
 } from '@chakra-ui/react';
-// import {
-//   HamburgerIcon,
-//   CloseIcon,
-//   ChevronDownIcon,
-//   ChevronRightIcon,
-// } from '@chakra-ui/icons';
 
 import img from "../assets/logo.png";
-import sideImg from "../assets/sammy-line-man-marks-days-on-calendar.png"
+import sideImg from "../assets/sammy-line-man-marks-days-on-calendar.png";
+import trending1 from "../assets/barbearia.png";
+import trending2 from "../assets/tatuador.png";
+import trending3 from "../assets/manicure.png";
 
-const navItems = [
-    {
-        label: "Home",
-        href: "#"
-    },
-    {
-        label: "Sobre nós",
-        href: "#"
-    },
-    {
-        label: "Serviços",
-        href: "#"
-    },
-    {
-        label: "Preços",
-        href: "#"
-    }
-];
 
 function HomeHeader() {
+    const navItems = [
+        {
+            label: "Home",
+            href: "#"
+        },
+        {
+            label: "Sobre nós",
+            href: "#"
+        },
+        {
+            label: "Serviços",
+            href: "#"
+        },
+        {
+            label: "Preços",
+            href: "#"
+        }
+    ];
+
     return(
     <Box>
         <Flex
@@ -73,17 +71,57 @@ function HomeHeader() {
 }
 
 export default function Homepage() {
+    const trending = [
+        {
+            label: "Radio Spider Barbershop",
+            href: "#",
+            picture: trending1,
+            address: "Rua do Princípe, 225, Boa Vista, Recife",
+            stars: 5.0
+        },
+        {
+            label: "Don Black Tattoo",
+            href: "#",
+            picture: trending2,
+            address: "Rua do Saudade, 25, Santo Amaro, Recife",
+            stars: 5.0
+        },
+        {
+            label: "Marinalva - Nails designer",
+            href: "#",
+            picture: trending3,
+            address: "A domicílio",
+            stars: 5.0
+        }
+    ]
+
+    const trendingItems = trending.map((item) => {
+        return (
+            <Box key={item.label} mr="48px">
+                <Image id="t" src={item.picture} borderRadius={4}/>
+                <Text as="b">{item.label}</Text>
+                <Text fontSize={"xs"}>{item.address}</Text>
+            </Box>
+        )
+    })
+
     return(
     <Box>
         <HomeHeader />
-        <Flex alignItems={"center"} height={"80vh"}>
-            <Text ml={4} width={"55%"} fontSize="2xl">
+        <Flex alignItems={"center"}>
+            <Text ml={4} width={"55%"} fontSize="2xl" textAlign="justify">
                 <strong>O sistema de agendamentos que veio para facilitar a sua vida.</strong> Seja como prestador de serviço ou cliente, aqui você está a um click de encontrar o serviço que deseja, na hora que você quer e sem perder tempo. <strong>Tá esperando o que? Salve Essa Data!</strong>
             </Text>
-            <Box ml="auto" mr={32}>
+            <Box ml="auto" mr={32} >
                 <Image src={sideImg}/>
             </Box>
         </Flex>
+        <Box pos="fixed" bottom="0px">
+        <Heading ml={4} mb={4}>Em destaque</Heading>
+        <Flex ml={4} mb={4}>
+            {trendingItems}
+        </Flex>
+        </Box>
     </Box>
     );
 }
