@@ -23,7 +23,8 @@ import {
 //   ChevronRightIcon,
 // } from '@chakra-ui/icons';
 
-import img from "../assets/logo.png"
+import img from "../assets/logo.png";
+import sideImg from "../assets/sammy-line-man-marks-days-on-calendar.png"
 
 const navItems = [
     {
@@ -79,8 +80,8 @@ export default function Homepage() {
             <Text ml={4} width={"55%"} fontSize="2xl">
                 <strong>O sistema de agendamentos que veio para facilitar a sua vida.</strong> Seja como prestador de serviço ou cliente, aqui você está a um click de encontrar o serviço que deseja, na hora que você quer e sem perder tempo. <strong>Tá esperando o que? Salve Essa Data!</strong>
             </Text>
-            <Box ml="auto">
-                <Image src={img}/>
+            <Box ml="auto" mr={32}>
+                <Image src={sideImg}/>
             </Box>
         </Flex>
     </Box>
