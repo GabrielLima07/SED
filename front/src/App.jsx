@@ -1,7 +1,10 @@
-import Homepage from "./components/Homepage";
+import Homepage from "./components/homepage";
+import { Outlet } from "react-router-dom";
 
 export default function App() {
   return (
-    <Homepage></Homepage>
+    <div>
+      <Outlet/>
+    </div>
   );
 }
