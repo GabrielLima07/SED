@@ -8,8 +8,11 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react'
 import sideimg from "../assets/sammy-line-man-marks-days-on-calendar.png"
+import { useNavigate } from 'react-router-dom'
 
 export default function SplitScreen() {
+  const navigate = useNavigate();
+
   return (
     <Stack minH={'50vh'} direction={{ base: 'column', md: 'row' }}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
@@ -36,12 +39,14 @@ export default function SplitScreen() {
           </Text>
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             <Button
+              onClick={() => {navigate("/login")}}
               borderRadius={8}
               bg={'blue.400'}
               color={'white'}
               _hover={{
                 bg: 'blue.500',
-              }}>
+              }}
+              >
               Comece agora
             </Button>
           </Stack>

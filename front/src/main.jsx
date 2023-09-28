@@ -4,6 +4,7 @@ import App from './App.jsx'
 import { ChakraProvider } from '@chakra-ui/react'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from './pages/homepage.jsx';
+import Loginpage from './pages/login.jsx';
 
 const router = createBrowserRouter([
   {
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        // element: <Loginpage />
+        element: <Loginpage />
       }
     ]
   }

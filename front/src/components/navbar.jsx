@@ -19,11 +19,12 @@ import {
     CloseIcon,
     ChevronDownIcon,
 } from '@chakra-ui/icons'
-import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
+
   
   export default function WithSubnavigation() {
     const { isOpen, onToggle } = useDisclosure()
-  
+    const navigate = useNavigate();  
     return (
       <Box>
         <Flex
@@ -67,8 +68,8 @@ import logo from "../assets/logo.png";
             justify={'flex-end'}
             direction={'row'}
             spacing={6}>
-            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
-              Sign In
+            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={() => {navigate("/login")}}>
+              Entrar
             </Button>
             <Button
               as={'a'}
@@ -81,7 +82,7 @@ import logo from "../assets/logo.png";
               _hover={{
                 bg: 'teal.300',
               }}>
-              Sign Up
+              Cadastre-se
             </Button>
           </Stack>
         </Flex>
