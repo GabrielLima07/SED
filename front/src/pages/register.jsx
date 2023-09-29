@@ -1,12 +1,12 @@
 import { Stack } from '@chakra-ui/react';
-import Loginform from "../components/loginform.jsx";
+import RegisterForm from "../components/registerForm";
 import SupportImage from '../components/supportImage.jsx';
 
-export default function Loginpage() {
+export default function RegisterPage() {
   return (
     <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>        
       <SupportImage/>
-      <Loginform/>
+      <RegisterForm/>
     </Stack>
   )
 }
