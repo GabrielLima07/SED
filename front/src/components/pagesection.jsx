@@ -54,7 +54,8 @@ export default function SplitScreen() {
       </Flex>
       <Flex flex={1} justify={"center"}>
         <Image
-          objectFit={"contain"}
+        // objectFit={"contain"}
+          objectFit={"none"}
           src={sideimg}
         />
       </Flex>

@@ -4,6 +4,7 @@ import {
   Image,
   useColorModeValue,
   SimpleGrid,
+  Stack
 } from '@chakra-ui/react'
 
 import trending1 from "../assets/barbearia.png";

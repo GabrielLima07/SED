@@ -11,48 +11,60 @@ import {
   Box
 } from '@chakra-ui/react';
 import logo from "../assets/logo.png";
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-export default function RegisterForm() {
-  const navigate = useNavigate();
-  const [form, setForm] = useState(<GeneralRegisterForm/>)
+// TODO: create dynamic form fields
+// TODO: insert inputs types
+const providerFormFields = [
+    {
+        pageNumber: 1,
+        fields: [
+            "Especialidade", 
+            "Telefone", 
+            "Celular", 
+            "Email para contato"
+        ]
+    },
+    {
+        pageNumber: 2,
+        fields: [
+            "Abertura", 
+            "Fechamento", 
+            "CEP", 
+            "Número",
+            "Complemento",
+            "Ponto de referência"
+        ]
+    },
+    {
+        pageNumber: 3,
+        fields: [
+            "Serviço", 
+            "Valor", 
+            "Descrição", 
+        ]
+    }
+]
 
-  return (
-    <Flex p={8} flex={1} align={'center'} justify={'center'}>
-      {form}
-    </Flex>
-  )
-}
+export default function ProviderForm() {
+    const [page, setPage] = useState(1);
 
-function GeneralRegisterForm() {
-  return (
+    return (
     <Flex p={8} flex={1} align={'center'} justify={'center'}>
       <Stack spacing={4} w={'full'} maxW={'md'}>
         <Box display={"flex"} justifyContent={"flex-end"}>
           <Image w={{base: 12, lg: 16}} src={logo} />
         </Box>
         <Text mt={-4} fontSize={{ base: 'md', lg: 'lg' }} color={'gray.400'}>Preencha com seus dados</Text>
-        <FormControl id="name">
-          <FormLabel>Nome</FormLabel>
-          <Input type="text" />
-        </FormControl>
-        <FormControl id="CPF">
-          <FormLabel>CPF</FormLabel>
-          <Input type="text" />
-        </FormControl>
-        <FormControl id="email">
-          <FormLabel>Email</FormLabel>
-          <Input type="email" />
-        </FormControl>
-        <FormControl id="password">
-          <FormLabel>Senha</FormLabel>
-          <Input type="password" />
-        </FormControl>
-        <FormControl id="password">
-          <FormLabel>Confirmar senha</FormLabel>
-          <Input type="password-confirm" />
-        </FormControl>
+        {/* mapped array */}
+        {
+            providerFormFields[page].fields.map((field) => {
+              <FormControl id="{field.toLowerCase()}">
+                <FormLabel>{field}</FormLabel>
+                <Input type="password-confirm" />
+              </FormControl>
+            })
+        }
         <Stack spacing={6}>
           <Stack
             direction={{ base: 'column'}}
@@ -71,5 +83,5 @@ function GeneralRegisterForm() {
         </Stack>
       </Stack>
     </Flex>
-  )
+    )
 }
