@@ -14,34 +14,11 @@ import {
 } from '@chakra-ui/react';
 import logo from "../assets/logo.png";
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import ProviderForm from './providerForm';
+import { registerFormFields } from '../data/formsFields';
 
-const registerFormFields = [
-  {
-    label: "Nome",
-    type: "text"
-  },
-  {
-    label: "CPF",
-    type: "text"
-  },
-  {
-    label: "Email",
-    type: "email"
-  },
-  {
-    label: "Senha",
-    type: "password"
-  },
-  {
-    label: "Confirmar senha",
-    type: "password"
-  }
-]
 
 export default function RegisterForm() {
-  const [showGeneralForm, setShowGeneralForm] = useState(true);
+  const navigate = useNavigate();
 
   const handleContinuarButton = () => {
     let arr = [...document.getElementsByClassName("input-fields")];
@@ -58,23 +35,9 @@ export default function RegisterForm() {
   }
 
   const handleVoltarButton = () => {
-    setShowGeneralForm(true)
+    
   }
 
-  return (
-    <Flex p={8} flex={1} align={'center'} justify={'center'}>
-      {showGeneralForm ? (
-        <GeneralRegisterForm onClick={handleContinuarButton}/>
-      ) : (
-        <ProviderForm onClick={handleVoltarButton} />
-      )}  
-    </Flex>
-  )
-}
-
-
-function GeneralRegisterForm({ onClick }) {
-  const navigate = useNavigate();
   return (
     <Flex p={8} flex={1} align={'center'} justify={'center'}>
       <Stack spacing={4} w={'full'} maxW={'md'}>
@@ -103,7 +66,7 @@ function GeneralRegisterForm({ onClick }) {
             <Checkbox id="checkbox-client">Agendar serviços</Checkbox>
             <Checkbox id="checkbox-provider">Prestar serviços</Checkbox>
           </Stack>
-          <Button colorScheme={'blue'} variant={'solid'} onClick={onClick}>
+          <Button colorScheme={'blue'} variant={'solid'} onClick={() => {navigate("/provider-form")}}>
             Continuar
           </Button>
           <Button colorScheme={'gray'} variant={"outline"} onClick={() => {navigate(-1)}}>

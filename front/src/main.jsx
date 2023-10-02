@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from './pages/homepage.jsx';
 import Loginpage from './pages/login.jsx';
 import RegisterPage from './pages/register';
+import ProviderForm from './components/providerForm.jsx'; //TODO: turn it into a page??????
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
         path: "/register",
         element: <RegisterPage/>
       },
+      {
+        path: "register/provider-form",
+        element: <ProviderForm />
+      }
     ]
   }
 ]);
