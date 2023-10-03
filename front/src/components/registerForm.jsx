@@ -13,7 +13,7 @@ import {
   RadioGroup
 } from '@chakra-ui/react';
 import logo from "../assets/logo.png";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { registerFormFields } from '../data/formsFields';
 
 
@@ -66,7 +66,7 @@ export default function RegisterForm() {
             <Checkbox id="checkbox-client">Agendar serviços</Checkbox>
             <Checkbox id="checkbox-provider">Prestar serviços</Checkbox>
           </Stack>
-          <Button colorScheme={'blue'} variant={'solid'} onClick={() => {navigate("/provider-form")}}>
+          <Button colorScheme={'blue'} variant={'solid'} onClick={() => navigate("/register/provider-form/1")}>
             Continuar
           </Button>
           <Button colorScheme={'gray'} variant={"outline"} onClick={() => {navigate(-1)}}>

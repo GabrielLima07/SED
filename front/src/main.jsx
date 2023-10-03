@@ -2,11 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import { ChakraProvider } from '@chakra-ui/react'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
 import Homepage from './pages/homepage.jsx';
 import Loginpage from './pages/login.jsx';
 import RegisterPage from './pages/register';
-import ProviderForm from './components/providerForm.jsx'; //TODO: turn it into a page??????
+import ProviderRegisterPage from './pages/providerRegister.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,16 +18,21 @@ const router = createBrowserRouter([
         element: <Homepage />
       },
       {
-        path: "/login",
+        path: "login",
         element: <Loginpage />
       },
       {
-        path: "/register",
+        path: "register",
         element: <RegisterPage/>
       },
       {
-        path: "register/provider-form",
-        element: <ProviderForm />
+        path: "register/provider-form/:page",
+        element: <ProviderRegisterPage />
+      },
+      {
+        path: "register/provider-form/4",
+        //element: <UserProfile />
+        element: <Navigate to="/" />
       }
     ]
   }
