@@ -90,3 +90,20 @@ export const providerFormFields = [
         ]
     }
 ]
+
+export const clientFormData = {
+  field: {
+    label: "Celular",
+    type: "number"
+  },
+  tags: [
+    "Barbearia", 
+    "Depilação", 
+    "Esteticista", 
+    "Nails designer", 
+    "Massagem", 
+    "Spa", 
+    "Saúde", 
+    "Tatuagem"
+  ]
+}

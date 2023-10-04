@@ -77,7 +77,7 @@ export default function Trending() {
     columns={{base: 1, md: 2, lg: 3}}>
       {/* <TredingCard/> */}
       {trending.map((item) => {
-        return <TredingCard data={item}/>
+        return <TredingCard key={item.label} data={item}/>
       })}
     </SimpleGrid>
   )

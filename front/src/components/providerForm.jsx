@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   Flex,
   Text,
   FormControl,
@@ -11,18 +10,45 @@ import {
   Box
 } from '@chakra-ui/react';
 import logo from "../assets/logo.png";
+import { useState } from 'react';
 import { providerFormFields } from "../data/formsFields"
 import { useNavigate, useParams } from 'react-router-dom';
 
 export default function ProviderForm() {
   const { page } = useParams()
   const navigate = useNavigate();
+  const [formData, setFormData] = useState({});
 
-  const handleContinuarButton = () => {
 
-    navigate(`/register/provider-form/${parseInt(page) + 1}`)
+  const checkInputFieldsValues = () => {
+    // se algum dos campos não estiver preenchido vai retornar false
+    let arr = [...document.getElementsByClassName("input-fields")];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].value === "") {
+        return false
+      }
+    }
+    return true;
   }
 
+
+  const handleContinuarButton = () => {
+    // redireciona p/ próxima página se todos os campos foram preenchidos
+    if (checkInputFieldsValues()) {
+      navigate(`/register/provider-form/${parseInt(page) + 1}`)
+    } else {
+      alert("Preencha todos os campos do formulário para prosseguir")
+    }
+  };
+
+
+  const handleInputChange = (event) => {
+    // armazena os dados inseridos nos inputs em um objeto
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
+  };
+
+  
   return (
   <Flex p={8} flex={1} align={'center'} justify={'center'}>
     <Stack spacing={4} w={'full'} maxW={'md'}>
@@ -33,9 +59,13 @@ export default function ProviderForm() {
       {
         providerFormFields[page - 1].fields.map((field) => {
           return (
-            <FormControl id={field.label.toLowerCase()}>
+            <FormControl isRequired id={field.label.toLowerCase()} key={field.label.toLowerCase()}>
               <FormLabel>{field.label}</FormLabel>
-              <Input type={field.type} />
+              <Input 
+                className="input-fields"
+                type={field.type}
+                onChange={handleInputChange}
+                />
             </FormControl>
           )
         })
@@ -44,7 +74,7 @@ export default function ProviderForm() {
         <Button 
           colorScheme={'blue'} 
           variant={'solid'} 
-          onClick={() => {handleContinuarButton()}}>
+          onClick={handleContinuarButton}>
           Continuar
         </Button>
         <Button 

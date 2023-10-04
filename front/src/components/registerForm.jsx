@@ -1,6 +1,5 @@
 import {
   Button,
-  Checkbox,
   Flex,
   Text,
   FormControl,
@@ -13,30 +12,44 @@ import {
   RadioGroup
 } from '@chakra-ui/react';
 import logo from "../assets/logo.png";
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { registerFormFields } from '../data/formsFields';
 
 
 export default function RegisterForm() {
   const navigate = useNavigate();
+  const [value, setValue] = useState("");
+  const [formData, setFormData] = useState({});
+
+
+  const checkInputFieldsValues = () => {
+    // se algum dos campos não estiver preenchido vai retornar false
+    let arr = [...document.getElementsByClassName("input-fields")];
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].value === "") {
+        return false
+      }
+    }
+    return true;
+  }
+
 
   const handleContinuarButton = () => {
-    let arr = [...document.getElementsByClassName("input-fields")];
-    console.log("1212")
-    arr.every(element => {
-      if (!element.value) {
-        alert("Preencha todos os campos para continuar");
-        return false;
-      } else if (element.value && document.getElementById("checkbox-provider").checked){
-        setShowGeneralForm(false)
-        return true;
-      }
-    });
-  }
+    // redireciona p/ próxima página se todos os campos foram preenchidos (incluindo o radio)
+    if (checkInputFieldsValues() && (value != "")) {
+      value === "c" ? navigate(`/register/provider-form/1`) : navigate(`/register/provider-form/1`)
+    } else {
+      alert("Preencha todos os campos do formulário para prosseguir")
+    }
+  };
 
-  const handleVoltarButton = () => {
-    
-  }
+
+  const handleInputChange = (event) => {
+    // armazena os dados inseridos nos inputs em um objeto
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
+  };
 
   return (
     <Flex p={8} flex={1} align={'center'} justify={'center'}>
@@ -49,24 +62,28 @@ export default function RegisterForm() {
           return(
             <FormControl isRequired 
               key={field.label.toLowerCase()} 
-              id={field.label.toLowerCase()}
-            >
+              id={field.label.toLowerCase()}>
               <FormLabel>{field.label}</FormLabel>
-              <Input className="input-fields" type={field.type} />
+              <Input 
+                className="input-fields" 
+                type={field.type} 
+                onChange={handleInputChange}/>
             </FormControl>
-          )
-        })}
+          )})}
         <Stack spacing={6}>
           <Stack
             direction={{ base: 'column'}}
             align={'start'}
             justify={'space-between'}>
             <Text>Desejo:</Text>
-            {/* TODO: Change checkbox for radio */}
-            <Checkbox id="checkbox-client">Agendar serviços</Checkbox>
-            <Checkbox id="checkbox-provider">Prestar serviços</Checkbox>
+            <RadioGroup onChange={setValue} value={value}>
+              <Stack>
+                <Radio value="c" id="radio-client">Agendar serviços</Radio>
+                <Radio value="p" id="radio-provider">Prestar serviços</Radio>
+              </Stack>
+            </RadioGroup>
           </Stack>
-          <Button colorScheme={'blue'} variant={'solid'} onClick={() => navigate("/register/provider-form/1")}>
+          <Button colorScheme={'blue'} variant={'solid'} onClick={handleContinuarButton}>
             Continuar
           </Button>
           <Button colorScheme={'gray'} variant={"outline"} onClick={() => {navigate(-1)}}>
