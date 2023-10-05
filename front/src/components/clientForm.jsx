@@ -18,7 +18,10 @@ import {
   
   export default function ClientForm() {
     const navigate = useNavigate();
+    // armazena o contato
     const [formData, setFormData] = useState({});
+    // armazena as tags
+    const [selectedTags, setSelectedTags] = useState([]);
   
   
     const checkInputFieldsValues = () => {
@@ -33,12 +36,19 @@ import {
     }
 
 
-    //TODO: get checkboxes values
-    const getPreferences = () => {
-        let arr = [...document.getElementsByClassName("tags")];
+    const handleCheckboxChange = (tag) => {
+      //Verifica se a tag já está ta no array
+      if (selectedTags.includes(tag)) {
+        // se selecionada, remove
+        setSelectedTags(prevSelectedTags => 
+          prevSelectedTags.filter(selectedTag => selectedTag !== tag)
+        );
+      } else {
+        // se não selecionada, adiciona
+        setSelectedTags(prevSelectedTags => [...prevSelectedTags, tag]);
+      }
     }
-  
-    //getPreferences()
+
 
     const handleContinuarButton = () => {
       // redireciona p/ próxima página se todos os campos foram preenchidos
@@ -74,7 +84,14 @@ import {
         <Text fontWeight={"semibold"}>Selecione suas preferências:</Text>
         <SimpleGrid mb={4} columns={2} spacingY={8}>
         { clientFormData.tags.map(tag => {
-                return <Checkbox key={tag} className="tags">{tag}</Checkbox>                
+            return (
+              <Checkbox
+                key={tag} 
+                className="tags"
+                onChange={() => handleCheckboxChange(tag)}
+                checked={selectedTags.includes(tag)}
+                >{tag}</Checkbox>
+            )
         })}
         </SimpleGrid>
         <Stack spacing={6}>
