@@ -56,7 +56,7 @@ function Chat({ user }) {
                     {user.firstName + " " +user.lastName}
                 </Text>
                 <Text 
-                  fontSize={{base: 8, lg: 10}} 
+                  fontSize={10} 
                   color={'gray.400'}
                 >
                     {user.lastMessage}
