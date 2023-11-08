@@ -8,6 +8,7 @@ import Loginpage from './pages/login.jsx';
 import RegisterPage from './pages/register';
 import ProviderRegisterPage from './pages/providerRegister.jsx';
 import ClientRegisterPage from './pages/clientRegister.jsx';
+import Profile from './pages/Profile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
       {
         path: "register/client-form",
         element: <ClientRegisterPage />
+      },
+      {
+        path: "/profile",
+        element: <Profile/>
       }
     ]
   }

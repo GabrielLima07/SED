@@ -44,7 +44,7 @@ export default function Loginform() {
             <Checkbox>Lembrar de mim</Checkbox>
             <Text color={'blue.500'}>Esqueceu a senha?</Text>
           </Stack>
-          <Button colorScheme={'blue'} variant={'solid'}>
+          <Button colorScheme={'blue'} variant={'solid'} onClick={() => navigate("/profile") }>
             Entrar
           </Button>
           <Text my={-4} textAlign={"center"}>Ou</Text>
