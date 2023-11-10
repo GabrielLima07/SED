@@ -24,7 +24,7 @@ const providerData = {
 
 export default function ProviderProfileData() {
   return (
-    <Flex m={8}>
+    <Flex mt={6} mx={8}>
       <Flex
         bg="purple.100"
         w={{base: 28, lg: 120}}  

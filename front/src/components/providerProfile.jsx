@@ -2,6 +2,8 @@ import { Box, Flex } from '@chakra-ui/react';
 import ProfileNavBar from '../components/profileNavBar';
 import Chats from './chats';
 import ProviderProfileData from './providerProfileData';
+import ProviderAppointments from './ProviderAppointments';
+import ProviderAgenda from './providerAgenda';
 
 export default function ProviderProfile() {
     return (
@@ -16,13 +18,15 @@ export default function ProviderProfile() {
                     <Chats />
                 </Box>
                 <Box w={{base: "100%", lg: "50%"}}>
-                    {/* ProviderAppointments */}
-                    
+                    <ProviderAppointments />
                 </Box>
-                <Box w={{base: "100%", lg: "50%"}}>
+                <Flex 
+                  w={{base: "100%", lg: "50%"}}
+                  flexDir={{base: "column", md: "row"}}
+                >
                     {/* Agenda, Times and Services */}
-                    
-                </Box>
+                    <ProviderAgenda />
+                </Flex>
             </Flex>
         </Box>
     )

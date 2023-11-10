@@ -3,7 +3,6 @@ import {
   Text,
   IconButton,
   Heading,
-  Box
 } from '@chakra-ui/react'
 import { ArrowUpDownIcon } from "@chakra-ui/icons";
 
@@ -17,8 +16,8 @@ const users = [
     },
     {
         id: 1,
-        firstName: "Peter",
-        lastName: "Parker",
+        firstName: "Gwen",
+        lastName: "Stacy",
         picture: null,
         lastMessage: "Lorem ipsum dolor sit amet, consectetur adsplicing elit. Etiam in mollis quam."
     },
@@ -68,9 +67,9 @@ function Chat({ user }) {
 
 export default function Chats() {
     return (
-        <Flex m={4} flexDir={"column"}>
-            <Flex px={2} >
-                <Heading size={"sm"} pt={2}>Chats</Heading>
+        <Flex my={4} flexDir={"column"}>
+            <Flex py={2} >
+                <Heading size={"md"} pt={2}>Chats</Heading>
                 <IconButton
                   ml="auto"
                   mt={-0.5}
