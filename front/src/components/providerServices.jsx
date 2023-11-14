@@ -38,17 +38,23 @@ export default function ProviderServices() {
   ]
 
   return(
-    <Flex flexDir={"column"} mx={4}  w={"50%"}>
+    <Flex 
+      flexDir={"column"} 
+      vw={{base: "100%", md:0}}
+      w={{base: "100%", md:"100%"}}
+      mr={{base: 6, md: 6}}
+      my={{base: 4, md: 0}}
+    >
       <Heading size="md" mb={2}>
         Meus serviços        
       </Heading>
-      <Flex flexDir={"column"}>
+      <Flex flexDir={"column"} border={"1px solid #DADDE2"} borderRadius={4} p={2}>
         <Button colorScheme={'blue'} variant={'solid'} mb={2}>
           Adicionar Serviço
         </Button>
         {services.map((service) => {
           return(
-            <Flex mb={2} border={"1px solid #AADDE9"} borderRadius={4} >
+            <Flex mb={2} border={"1px solid #547FFF"} borderRadius={4} >
               <Flex flexDir={"column"} fontWeight={"semibold"}>
                 <Text
                   m={2}

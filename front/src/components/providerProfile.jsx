@@ -8,14 +8,15 @@ import ProviderServices from './providerServices';
 
 export default function ProviderProfile() {
     return (
-        <Box>
+        <Box 
+            bgColor={"#f5f5f5"}
+        >
             <ProfileNavBar />
             <Flex flexWrap={"wrap"}>
                 <Box w={{base: "100%", lg: "50%"}}>
                     <ProviderProfileData />
                 </Box>
                 <Box w={{base: "100%", lg: "50%"}}>
-                    {/* Chats */}
                     <Chats />
                 </Box>
                 <Box w={{base: "100%", lg: "50%"}}>
