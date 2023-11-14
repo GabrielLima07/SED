@@ -4,6 +4,7 @@ import Chats from './chats';
 import ProviderProfileData from './providerProfileData';
 import ProviderAppointments from './providerAppointments';
 import ProviderAgenda from './providerAgenda';
+import ProviderServices from './providerServices';
 
 export default function ProviderProfile() {
     return (
@@ -24,8 +25,8 @@ export default function ProviderProfile() {
                   w={{base: "100%", lg: "50%"}}
                   flexDir={{base: "column", md: "row"}}
                 >
-                    {/* Agenda, Times and Services */}
                     <ProviderAgenda />
+                    <ProviderServices />
                 </Flex>
             </Flex>
         </Box>

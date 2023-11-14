@@ -8,13 +8,13 @@ import {
 from "@chakra-ui/react";
 import { CalendarPanel } from "chakra-dayzed-datepicker";
 import { subDays, addDays } from 'date-fns';
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon, ExternalLinkIcon } from "@chakra-ui/icons";
 import { useState } from "react";
 
 const day = [
   {
     time: "09:00 - 10:00",
-    available: false,
+    available: true,
   },
   {
     time: "10:00 - 11:00",
@@ -52,17 +52,31 @@ function DayTimes({ day }) {
     <SimpleGrid mt={4}>
       {day.map((time) => {
         return(
-          <Flex mb={2} border={"1px solid #AADDE2"} borderRadius={4}>
+          <Flex 
+          mb={2} 
+          border={time.available ? "1px solid #37FF4B" : "none"} 
+          borderRadius={4} 
+          bgColor={time.available ? "none" : "#FF3737"}
+          
+          >
             <Text
               m={2}
+              fontWeight={"semibold"}
             >{time.time}</Text>
-            <IconButton
-              ml={"auto"}
-              size={"sm"}
-              aria-label="Dropdown-menu"
-              icon={<ChevronDownIcon />}
-              bg="transparent"
-            />
+            <Flex ml="auto">
+              <IconButton
+                size={"sm"}
+                aria-label="Dropdown-menu"
+                icon={<ExternalLinkIcon />}
+                bg="transparent"
+              />
+              <IconButton
+                size={"sm"}
+                aria-label="Dropdown-menu"
+                icon={<ChevronDownIcon />}
+                bg="transparent"
+              />
+            </Flex>
           </Flex>
         )
       })}
