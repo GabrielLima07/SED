@@ -2,7 +2,7 @@ import { Box, Flex } from '@chakra-ui/react';
 import ProfileNavBar from '../components/profileNavBar';
 import Chats from './chats';
 import ProviderProfileData from './providerProfileData';
-import ProviderAppointments from './ProviderAppointments';
+import ProviderAppointments from './providerAppointments';
 import ProviderAgenda from './providerAgenda';
 
 export default function ProviderProfile() {
