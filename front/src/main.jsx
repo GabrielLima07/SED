@@ -9,6 +9,7 @@ import RegisterPage from './pages/register';
 import ProviderRegisterPage from './pages/providerRegister.jsx';
 import ClientRegisterPage from './pages/clientRegister.jsx';
 import Profile from './pages/Profile.jsx';
+import ErrorComponent from './components/errorComponent.jsx';
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,8 @@ const router = createBrowserRouter([
       },
       {
         path: "register/provider-form/:page",
-        element: <ProviderRegisterPage />
+        element: <ProviderRegisterPage />,
+        errorElement: <ErrorComponent />
       },
       {
         path: "register/provider-form/4",
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile/>
+      },
+      {
+        path: "*",
+        element: <ErrorComponent />
       }
     ]
   }
