@@ -15,6 +15,7 @@ import logo from "../assets/logo.png";
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { registerFormFields } from '../data/formsFields';
+import SwitchColorMode from './switchColorMode';
 
 
 export default function RegisterForm() {
@@ -54,9 +55,10 @@ export default function RegisterForm() {
   return (
     <Flex p={8} flex={1} align={'center'} justify={'center'}>
       <Stack spacing={4} w={'full'} maxW={'md'}>
-        <Box display={"flex"} justifyContent={"flex-end"}>
-          <Image w={{base: 12, lg: 16}} src={logo} />
-        </Box>
+        <Flex>
+          <SwitchColorMode />
+          <Image w={{base: 12, lg: 16}} src={logo} ml='auto' />
+        </Flex>
         <Text mt={-4} fontSize={{ base: 'md', lg: 'lg' }} color={'gray.400'}>Preencha com seus dados</Text>
         {registerFormFields.map((field) => {
           return(

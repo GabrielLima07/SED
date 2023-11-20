@@ -21,6 +21,7 @@ import {
 } from '@chakra-ui/icons'
 import { useNavigate } from "react-router-dom";
 import SearchBar from './searchBar';
+import SwitchColorMode from './switchColorMode';
 
   
   export default function ProfileNavBar() {
@@ -72,7 +73,9 @@ import SearchBar from './searchBar';
             flex={{ base: 1, md: 0 }}
             justify={'flex-end'}
             direction={'row'}
-            spacing={6}>
+            spacing={6}
+          >
+            <SwitchColorMode />
             <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={() => {navigate("/login")}}>
               Sair
             </Button>

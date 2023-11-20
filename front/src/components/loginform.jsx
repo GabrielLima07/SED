@@ -15,17 +15,17 @@ import logo from "../assets/logo.png";
 import googleIcon from "../assets/google.png";
 import microsoftIcon from "../assets/microsoft.png";
 import { useNavigate } from 'react-router-dom';
-
-
+import SwitchColorMode from './switchColorMode';
 export default function Loginform() {
   const navigate = useNavigate();
 
   return (
     <Flex p={8} flex={1} align={'center'} justify={'center'}>
       <Stack spacing={4} w={'full'} maxW={'md'}>
-        <Box display={"flex"} justifyContent={"flex-end"}>
-          <Image w={{base: 12, lg: 16}} src={logo} />
-        </Box>
+        <Flex>
+          <SwitchColorMode />
+          <Image w={{base: 12, lg: 16}} src={logo} ml='auto' />
+        </Flex>
         <Heading fontSize={'2xl'}>Bem vindo!</Heading>
         <Text mt={-4} fontSize={{ base: 'md', lg: 'lg' }} color={'gray.400'}>Insira seus dados abaixo</Text>
         <FormControl id="email">

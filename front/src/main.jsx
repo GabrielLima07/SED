@@ -10,6 +10,9 @@ import ProviderRegisterPage from './pages/providerRegister.jsx';
 import ClientRegisterPage from './pages/clientRegister.jsx';
 import Profile from './pages/Profile.jsx';
 import ErrorComponent from './components/errorComponent.jsx';
+import { ColorModeScript } from "@chakra-ui/color-mode";
+import theme from './theme.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -57,7 +60,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <RouterProvider router={router}/>
     </ChakraProvider>
   </React.StrictMode>,

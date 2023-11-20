@@ -20,6 +20,7 @@ import {
     ChevronDownIcon,
 } from '@chakra-ui/icons'
 import { useNavigate } from "react-router-dom";
+import SwitchColorMode from './switchColorMode';
 
   
   export default function WithSubnavigation() {
@@ -67,7 +68,9 @@ import { useNavigate } from "react-router-dom";
             flex={{ base: 1, md: 0 }}
             justify={'flex-end'}
             direction={'row'}
-            spacing={6}>
+            spacing={6}
+          >
+            <SwitchColorMode />
             <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={() => {navigate("/login")}}>
               Entrar
             </Button>
@@ -77,10 +80,10 @@ import { useNavigate } from "react-router-dom";
               fontSize={'sm'}
               fontWeight={600}
               color={'white'}
-              bg={'teal.400'}
+              colorScheme={'blue'}
               href={'#'}
               _hover={{
-                bg: 'teal.300',
+                bg: 'blue.300',
               }}>
               Cadastre-se
             </Button>

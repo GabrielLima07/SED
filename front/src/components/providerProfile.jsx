@@ -8,9 +8,7 @@ import ProviderServices from './providerServices';
 
 export default function ProviderProfile() {
     return (
-        <Box 
-            bgColor={"#f5f5f5"}
-        >
+        <Box>
             <ProfileNavBar />
             <Flex flexWrap={"wrap"}>
                 <Box w={{base: "100%", lg: "50%"}}>

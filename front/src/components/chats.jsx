@@ -93,7 +93,7 @@ export default function Chats() {
             <Flex flexDir={"column"}>
                 {users.map((user) => {
                     return (
-                        <Box bgColor={"#EEFAFA"}>
+                        <Box>
                             <Chat key={user.id} user={user} />
                             <Divider />
                         </Box>

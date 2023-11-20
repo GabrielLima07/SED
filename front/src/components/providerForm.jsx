@@ -13,6 +13,7 @@ import logo from "../assets/logo.png";
 import { useState } from 'react';
 import { providerFormFields } from "../data/formsFields"
 import { useNavigate, useParams } from 'react-router-dom';
+import SwitchColorMode from './switchColorMode';
 
 export default function ProviderForm() {
   const { page } = useParams()
@@ -52,9 +53,10 @@ export default function ProviderForm() {
   return (
   <Flex p={8} flex={1} align={'center'} justify={'center'}>
     <Stack spacing={4} w={'full'} maxW={'md'}>
-      <Box display={"flex"} justifyContent={"flex-end"}>
-        <Image w={{base: 12, lg: 16}} src={logo} />
-      </Box>
+      <Flex>
+          <SwitchColorMode />
+          <Image w={{base: 12, lg: 16}} src={logo} ml='auto' />
+        </Flex>
       <Text mt={-4} fontSize={{ base: 'md', lg: 'lg' }} color={'gray.400'}>Preencha com seus dados</Text>
       {
         providerFormFields[page - 1].fields.map((field) => {
