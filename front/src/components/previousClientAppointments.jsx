@@ -1,14 +1,13 @@
 import {
-    Flex,
-    Text,
-    Heading,
-    Image,
-    IconButton,
-    SimpleGrid,
-    Tag
-  } from '@chakra-ui/react'
-  import { CalendarIcon, TimeIcon, TriangleDownIcon, ChevronDownIcon } from "@chakra-ui/icons";
-  
+  Flex,
+  Text,
+  Heading,
+  Image,
+  SimpleGrid,
+  Tag
+} from '@chakra-ui/react'
+import { CalendarIcon, TimeIcon, TriangleDownIcon } from "@chakra-ui/icons";
+
   const appointments = [
       {
           id: 0,
@@ -55,49 +54,55 @@ import {
   
   function Appointment({ appointment }) {
       return (
-          <Flex
-            border="1px solid lightgray"
-          >
+        <Flex border={"1px solid #DADDE2"} borderRadius={4}>
               <Image src={appointment.pic} w={32} h={32}/>
-              <Flex flexDir={"column"} pl={3}>
+              <Flex flexDir={"column"} ml={3} mt={2}>
                   <Text color={'gray.500'} fontSize={{base: 12, lg: 14}}>{appointment.provider}</Text>
                   <Text fontWeight="semibold" fontSize={{base: 14, lg: 16}}>{appointment.service}</Text>
                   <Flex my={1}>
                       <CalendarIcon />
-                      <Text mt={-0.5} ml={1} color={'gray.700'} fontSize={{base: 12, lg: 14}}>{appointment.date}</Text>
+                      <Text mt={-0.5} ml={1} color={'gray.500'} fontSize={{base: 12, lg: 14}}>{appointment.date}</Text>
                   </Flex>
                   <Flex my={1}>
                       <TimeIcon />
-                      <Text mt={-0.5} ml={1} color={'gray.700'} fontSize={{base: 12, lg: 14}}>{appointment.time}</Text>
+                      <Text mt={-0.5} ml={1} color={'gray.500'} fontSize={{base: 12, lg: 14}}>{appointment.time}</Text>
                   </Flex>
                   <Flex my={1}>
                       <TriangleDownIcon />
-                      <Text mt={-0.5} ml={1} color={'gray.700'} fontSize={{base: 12, lg: 14}}>{appointment.address}</Text>
+                      <Text mt={-0.5} ml={1} color={'gray.500'} fontSize={{base: 12, lg: 14}}>{appointment.address}</Text>
                   </Flex>
               </Flex>
-              <Tag p={2} bgColor={"blue.300"} h={8} ml="auto" my={2}>
+              <Flex 
+              ml="auto" 
+              h={7} 
+              my={2} 
+              flexDir={{base: "column",md:"row"}}
+              mt={{base: 2, md: 0}}
+            >
+                <Tag 
+                  mr={{base: 2, md: 2}}
+                  py={2} 
+                  px={4} 
+                  mt={{base: 2, md: 2}}
+                  bgColor={"blue.300"}
+                >
                   {appointment.price}
-              </Tag>
-              <IconButton
-                    size={"md"}
-                    aria-label="Notifications"
-                    icon={<ChevronDownIcon />}
-                    bg="transparent"
-                    _hover={{
-                        transform: "scale(1.4)"
-                    }}
-                  />
+                </Tag>
+            </Flex>
           </Flex>
       )
   }
   
   export default function PreviousClientAppointments() {
       return (
-          <Flex m={4} p={2} flexDir={"column"}>
-              <Heading size="md" ml={2}>
+          <Flex m={4} ml={{base: 4, lg: -2}} mt={-2} p={2} flexDir={"column"}>
+              <Heading size="md" mb={2}>
                   Agendamentos anteoriores
               </Heading>
-              <SimpleGrid m={2} spacing={2}>
+              <SimpleGrid p={3} spacing={2} border={"1px solid #DADDE2"} borderRadius={4}
+                maxH= "50vh"
+                overflow="auto"
+              >
               {appointments.map((appointment) => {
                   return (
                       <Appointment appointment={appointment} key={appointment.id} />

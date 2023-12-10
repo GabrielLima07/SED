@@ -21,14 +21,14 @@ import { useState } from 'react';
 import { useAuth } from '../context/authContext';
 
 
-export default function Loginform() {
+export default function LoginformProvider() {
   const navigate = useNavigate();
-  const { loggedUserData, logado, login, logout } = useAuth();
+  const { loggedUserData, logado, loginPrestador, logout } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    await login(email, password);
+    await loginPrestador(email, password);
     navigate("/profile")
   };
 

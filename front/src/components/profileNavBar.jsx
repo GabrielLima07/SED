@@ -22,11 +22,24 @@ import {
 import { useNavigate } from "react-router-dom";
 import SearchBar from './searchBar';
 import SwitchColorMode from './switchColorMode';
-
+import { useState } from "react";
+import { useAuth } from '../context/authContext';
   
   export default function ProfileNavBar() {
     const { isOpen, onToggle } = useDisclosure()
     const navigate = useNavigate();  
+    const [searchQuery, setSearchQuery] = useState('');
+    const { logout } = useAuth();
+
+    const handleSearch = () => {
+      navigate(`/search-results?query=${searchQuery}`);
+    }
+
+    const handleSair = () => {
+      logout();
+      navigate("/");
+    }
+
     return (
       <Box>
         <Flex
@@ -62,7 +75,7 @@ import SwitchColorMode from './switchColorMode';
               SED
             </Text>
 
-            <SearchBar />
+            <SearchBar setSearchQuery={setSearchQuery} onSearch={handleSearch} />
   
             <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
               <DesktopNav />
@@ -76,7 +89,7 @@ import SwitchColorMode from './switchColorMode';
             spacing={6}
           >
             <SwitchColorMode />
-            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={() => {navigate("/login")}}>
+            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={handleSair}>
               Sair
             </Button>
           </Stack>
@@ -93,6 +106,11 @@ import SwitchColorMode from './switchColorMode';
     const linkColor = useColorModeValue('gray.600', 'gray.200')
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+    const navigate = useNavigate();
+
+    const navigateTo = (path) => {
+      navigate(path);
+    };
   
     return (
       <Stack direction={'row'} spacing={4}>
@@ -103,7 +121,8 @@ import SwitchColorMode from './switchColorMode';
                 <Box
                   as="a"
                   p={2}
-                  href={navItem.href ?? '#'}
+                  onClick={() => navigateTo(navItem.href)}
+                  cursor={"pointer"}
                   fontSize={'sm'}
                   fontWeight={500}
                   color={linkColor}
@@ -145,13 +164,19 @@ import SwitchColorMode from './switchColorMode';
   
   const MobileNavItem = ({ label, children, href }) => {
     const { isOpen, onToggle } = useDisclosure()
+    const navigate = useNavigate();
+
+    const navigateTo = (path) => {
+      navigate(path);
+    };
   
     return (
       <Stack spacing={4} onClick={children && onToggle}>
         <Box
           py={2}
           as="a"
-          href={href ?? '#'}
+          onClick={() => navigateTo(href)}
+          cursor={'pointer'}
           justifyContent="space-between"
           alignItems="center"
           _hover={{
@@ -194,10 +219,10 @@ import SwitchColorMode from './switchColorMode';
   const NAV_ITEMS = [
     {
         label: "Meu perfil",
-        href: "profile"
+        href: "/profile"
     },
     {
         label: "Estabelecimentos",
-        href: "#"
+        href: "/search-results?query="
     }
 ];

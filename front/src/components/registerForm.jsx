@@ -39,7 +39,9 @@ export default function RegisterForm() {
   const handleContinuarButton = () => {
     // redireciona p/ próxima página se todos os campos foram preenchidos (incluindo o radio)
     if (checkInputFieldsValues() && (value != "")) {
-      value === "c" ? navigate(`/register/provider-form/1`) : navigate(`/register/provider-form/1`)
+      value === "c" 
+      ? navigate(`/register/client-form/`, { state: formData }) 
+      : navigate(`/register/provider-form/`, { state: formData })
     } else {
       alert("Preencha todos os campos do formulário para prosseguir")
     }
@@ -49,7 +51,10 @@ export default function RegisterForm() {
   const handleInputChange = (event) => {
     // armazena os dados inseridos nos inputs em um objeto
     const { id, value } = event.target;
-    setFormData({ ...formData, [id]: value });
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
   };
 
   return (

@@ -4,7 +4,7 @@ export const registerFormFields = [
       type: "text"
     },
     {
-      label: "CPF",
+      label: "Celular",
       type: "text"
     },
     {
@@ -13,10 +13,6 @@ export const registerFormFields = [
     },
     {
       label: "Senha",
-      type: "password"
-    },
-    {
-      label: "Confirmar senha",
       type: "password"
     }
 ]
@@ -30,17 +26,9 @@ export const providerFormFields = [
             type: "text"
           },
           {
-            label: "Telefone",
-            type: "tel"
-          },
-          {
-            label: "Celular",
+            label: "Endereco",
             type: "text"
           },
-          {
-            label: "Email para contato",
-            type: "text"
-          }
         ]
     },
     {
@@ -55,55 +43,36 @@ export const providerFormFields = [
             type: "time"
           },
           {
-            label: "CEP",
-            type: "text"
-          },
-          {
-            label: "Número",
-            type: "number"
-          },
-          {
-            label: "Complemento",
-            type: "text"
-          }, 
-          {
-            label: "Ponto de referência",
-            type: "text"
-          }
-        ]
-    },
-    {
-        pageNumber: 3,
-        fields: [
-          {
-            label: "Serviço", 
-            type: "text"
-          },
-          {
-            label: "Valor",
-            type: "number"
-          },
-          {
-            label: "Descrição",
+            label: "Email para contato",
             type: "text"
           }
         ]
     }
 ]
 
-export const clientFormData = {
-  field: {
-    label: "Celular",
-    type: "number"
-  },
-  tags: [
-    "Barbearia", 
-    "Depilação", 
-    "Esteticista", 
-    "Nails designer", 
-    "Massagem", 
-    "Spa", 
-    "Saúde", 
-    "Tatuagem"
-  ]
-}
+// export const clientFormData = {
+//   fields: [
+//     {
+//       label: "Data de nascimento",
+//       type: "date"
+//     },
+//     {
+//       label: "Gênero",
+//       type: "text"
+//     },
+//     {
+//       label: "Estado civil",
+//       type: "text"
+//     }
+//   ],
+//   tags: [
+//     "Barbearia", 
+//     "Depilação", 
+//     "Esteticista", 
+//     "Nails designer", 
+//     "Massagem", 
+//     "Spa", 
+//     "Saúde", 
+//     "Tatuagem"
+//   ]
+// }

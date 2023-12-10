@@ -71,7 +71,7 @@ import SwitchColorMode from './switchColorMode';
             spacing={6}
           >
             <SwitchColorMode />
-            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={() => {navigate("/login")}}>
+            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} onClick={() => {navigate("/userTypeLogin")}}>
               Entrar
             </Button>
             <Button
@@ -81,10 +81,11 @@ import SwitchColorMode from './switchColorMode';
               fontWeight={600}
               color={'white'}
               colorScheme={'blue'}
-              href={'#'}
               _hover={{
                 bg: 'blue.300',
-              }}>
+              }}
+              onClick={() => {navigate("/register")}}
+              >
               Cadastre-se
             </Button>
           </Stack>
@@ -101,7 +102,12 @@ import SwitchColorMode from './switchColorMode';
     const linkColor = useColorModeValue('gray.600', 'gray.200')
     const linkHoverColor = useColorModeValue('gray.800', 'white')
     const popoverContentBgColor = useColorModeValue('white', 'gray.800')
+    const navigate = useNavigate();  
   
+    const navigateTo = (path) => {
+      navigate(path);
+    };
+
     return (
       <Stack direction={'row'} spacing={4}>
         {NAV_ITEMS.map((navItem) => (
@@ -111,7 +117,8 @@ import SwitchColorMode from './switchColorMode';
                 <Box
                   as="a"
                   p={2}
-                  href={navItem.href ?? '#'}
+                  onClick={() => navigateTo(navItem.href)}
+                  cursor={"pointer"}
                   fontSize={'sm'}
                   fontWeight={500}
                   color={linkColor}
@@ -152,14 +159,20 @@ import SwitchColorMode from './switchColorMode';
   }
   
   const MobileNavItem = ({ label, children, href }) => {
-    const { isOpen, onToggle } = useDisclosure()
+    const { isOpen, onToggle } = useDisclosure();
+    const navigate = useNavigate();
+
+    const navigateTo = (path) => {
+      navigate(path);
+    };
   
     return (
       <Stack spacing={4} onClick={children && onToggle}>
         <Box
           py={2}
           as="a"
-          href={href ?? '#'}
+          onClick={() => navigateTo(href)}
+          cursor={'pointer'}
           justifyContent="space-between"
           alignItems="center"
           _hover={{
@@ -202,18 +215,18 @@ import SwitchColorMode from './switchColorMode';
   const NAV_ITEMS = [
     {
         label: "Home",
-        href: "#"
+        href: "/"
     },
     {
         label: "Sobre nós",
-        href: "#"
+        href: "/sobrenos"
     },
     {
         label: "Serviços",
-        href: "#"
+        href: "/servicos"
     },
     {
         label: "Preços",
-        href: "#"
+        href: "/precos"
     }
 ];

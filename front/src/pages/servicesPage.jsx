@@ -1,20 +1,23 @@
-import {
+import React from 'react'
+import { 
+  Box,
   Button,
   Flex,
   Heading,
-  Image,
   Stack,
   Text,
   useBreakpointValue,
-} from '@chakra-ui/react'
-import sideimg from "../assets/sammy-line-man-marks-days-on-calendar.png"
-import { useNavigate } from 'react-router-dom'
+} from '@chakra-ui/react';
+import WithSubnavigation from '../components/navbar';
+import { useNavigate } from 'react-router-dom';
 
-export default function SplitScreen() {
+const ServicesPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Stack minH={'50vh'} direction={{ base: 'column', md: 'row' }}>
+    <Box>
+      <WithSubnavigation />
+      <Stack minH={'50vh'} direction={{ base: 'column', md: 'row' }} ml={-1.5}>
       <Flex p={8} flex={1} align={'center'} justify={'center'}>
         <Stack spacing={2} w={'full'} maxW={'lg'}>
           <Heading fontSize={{ base: '3xl', md: '4xl', lg: '5xl' }}>
@@ -31,11 +34,13 @@ export default function SplitScreen() {
                 bg: 'blue.400',
                 zIndex: -1,
               }}>
-              Salve Essa Data
+              Nossos serviços
             </Text>
           </Heading>
           <Text fontSize={{ base: 'md', lg: 'lg' }} color={'gray.500'}>
-          O sistema de agendamentos que veio para facilitar a sua vida. Seja como prestador de serviço ou cliente, aqui você está a um click de encontrar o serviço que deseja, na hora que você quer e sem perder tempo. Tá esperando o que? Salve Essa Data!
+          Os serviços oferecidos variam de acordo com os prestadores de serviços.
+          <br />
+          No momento contamos com maior suporte para Personal Trainers, Barbeiros, Tatuadores e Nails designers.
           </Text>
           <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
             <Button
@@ -53,12 +58,10 @@ export default function SplitScreen() {
         </Stack>
       </Flex>
       <Flex flex={1} justify={"center"}>
-        <Image
-        // objectFit={"contain"}
-          objectFit={"none"}
-          src={sideimg}
-        />
       </Flex>
-    </Stack>
+      </Stack>
+    </Box>
   )
 }
+
+export default ServicesPage

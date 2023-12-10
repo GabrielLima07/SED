@@ -5,6 +5,13 @@ import {
   Heading,
   Divider,
   Box,
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+  PopoverArrow,
+  PopoverCloseButton,
+  PopoverHeader,
+  PopoverBody,
 } from '@chakra-ui/react'
 import { ArrowUpDownIcon } from "@chakra-ui/icons";
 
@@ -76,25 +83,37 @@ export default function Chats() {
             border={"1px solid #DADDE2"} 
             borderRadius={8} 
             ml={{base: 6, lg: 0}}
+            
         >
-            <Flex py={2} >
+            <Flex py={2}>
                 <Heading size={"md"} mt={2} ml={2} >Chats</Heading>
-                <IconButton
-                  ml="auto"
-                  mt={-0.5}
-                  aria-label="Notifications"
-                  icon={<ArrowUpDownIcon />}
-                  bg="transparent"
-                  _hover={{
-                    transform: "scale(1.4)"
-                }}
-                />
+                <Popover>
+                  <PopoverTrigger>
+                    <IconButton
+                        aria-label="Chats"
+                        ml="auto"
+                        icon={<ArrowUpDownIcon />}
+                        bg="transparent"
+                        _hover={{
+                            transform: "scale(1.2)"
+                        }}
+                      />
+                  </PopoverTrigger>
+                  <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
+                    <PopoverHeader>AVISO</PopoverHeader>
+                    <PopoverBody>
+                      <Text>Essa funcionalidade ainda será implementada 😉😉🙂</Text>
+                    </PopoverBody>
+                  </PopoverContent>
+                </Popover>
             </Flex>
-            <Flex flexDir={"column"}>
+            <Flex flexDir={"column"} filter="blur(1px)">
                 {users.map((user) => {
                     return (
-                        <Box>
-                            <Chat key={user.id} user={user} />
+                        <Box key={user.id}>
+                            <Chat user={user} />
                             <Divider />
                         </Box>
                     )
